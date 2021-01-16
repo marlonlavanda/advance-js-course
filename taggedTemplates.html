@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="./taggedTemplates.js"></script> -->
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      background-color: aquamarine;
+      color: darkcyan;
+      font-size: 2em;
+      text-shadow: 1px 1px rgba(0, 0, 0, .5);
+    }
+    strong{
+      color: crimson;
+      padding: .15em .4em;
+      background: rgb(150, 150, 248);
+      border: 2px solid #f2f5ff;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function taggedTemplate(strings, ...dynamicValues) {
+    // console.log(strings, dynamicValues);
+    let newContent = ''
+    strings.forEach( (string, index) => {
+      // let strong = ''
+      // if (dynamicValues[index]){
+      //   strong = `<strong>${dynamicValues[index]}</strong>`;
+
+      // Condicional utilizando ternarios 
+      const strong = dynamicValues[index] ? `<strong>${dynamicValues[index]}</strong>` : ''
+      // console.log(dynamicValues[index]);
+      // console.log(string);
+    // }
+
+    // newContent = newContent + string + strong
+
+    // Otra forma de devolver el contemnido de la variable newConten 
+    newContent += `${string} ${strong}`
+
+    })
+    
+    return `<p>${newContent}</p>`;
+    // console.log(newContent);
+  }
+
+  const message = taggedTemplate`El ${'trabajo duro'} supera al ${'talento natural'}`
+  document.body.innerHTML =  message
+  </script>
+
+</body>
+</html>
